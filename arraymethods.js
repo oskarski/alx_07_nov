@@ -97,9 +97,56 @@ const productsArray = products.reduce(
 
 console.log(productsArray);
 
+const person = {
+    name: 'oskar',
+    address: {
+        street: 'Jasna 14',
+        city: 'Warszawa'
+    }
+};
+
+// Plytkie kopiowani - shallow copying. Musimy sami zadbac o skopiowanie obiketu bedacego adresem 
+const copyOfPerson = {...person, address: {...person.address}};
+
+person.name = 'maciek';
+person.address.street = 'Marszalkowska 15';
+
+console.log(person);
+console.log(copyOfPerson);
+
+// const anotherCopyOfPerson = {...person};
+// const lodashCopyOfPerson = _.cloneDeep(person);
+// TODO Wrocic z lodashem!
+
+person.address.street = 'Zlota';
+
+// console.log(anotherCopyOfPerson);
+// console.log(lodashCopyOfPerson);
+
+// Czasami najlepsze rozwiazanie, kiedy mamy tylko dane w obiekcie
+const copyWithJSON = JSON.parse(JSON.stringify(person));
+
 // const first = () => Math.random();
 
 // const second = (arg) => arg * 2;
 
 // second(first(third()), fourth())
 
+// Mapowanie elementow tablicy na nowa tablice ze zmienionymi elementami
+const mappedProducts = products.map((product, i) => {
+    return {
+        ...product,
+        name: product.name.toUpperCase(),
+        total: product.price * product.quantity,
+        index: i
+    }
+});
+// W react najczesciej tak by to wygladalo:
+// const mappedProducts = products.map((product, i) => ({
+//     ...product,
+//     name: product.name.toUpperCase(),
+//     total: product.price * product.quantity,
+//     index: i
+// }));
+
+console.log(mappedProducts);
