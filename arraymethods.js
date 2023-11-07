@@ -150,3 +150,22 @@ const mappedProducts = products.map((product, i) => {
 // }));
 
 console.log(mappedProducts);
+
+// Przefiltruj produkty -> wez tylko te, ktore spelniaja warunek
+const filteredProducts = products.filter(product => product.quantity > 0);
+
+console.log(filteredProducts)
+
+console.log(
+    // Laczenie wywolan
+    products
+        .filter(product => product.quantity > 0)
+        .map(product => product.quantity) 
+);
+
+// Znajdz pierwszy pasujacy element z tablicy i go zwroc
+// Jesli sie nie udalo znalezc to zwraca undefined
+const foundProduct = products.find(product => product.quantity === 0);
+
+console.log(foundProduct);
+
