@@ -169,3 +169,23 @@ const foundProduct = products.find(product => product.quantity === 0);
 
 console.log(foundProduct);
 
+const sortedProducts = products.sort((firstProduct, secondProduct) => {
+
+    // od min do max
+    // return firstProduct.quantity - secondProduct.quantity;
+
+    // od max do min
+    return secondProduct.quantity - firstProduct.quantity;
+});
+
+console.log(sortedProducts)
+
+const sortedProductsByName = products.sort((firstProduct, secondProduct) => {
+    if (firstProduct.name === secondProduct.name) return 0;
+
+    // od min do max
+    return firstProduct.name < secondProduct.name ? -1 : 1;
+
+    // od max do min
+    // return firstProduct.name < secondProduct.name ? 1 : -1;
+});
